@@ -1,27 +1,11 @@
 ---
-import Globe from "../components/Globe";
 import BasicLayout from "../layouts/BasicLayout.astro";
 ---
-
-<script>
-  import { timeline, type TimelineDefinition } from "motion";
-
-  const sequence = [
-    [
-      ".loaderRef",
-      { opacity: [1, 0], pointerEvents: "none" },
-      { easing: "ease-out" },
-    ],
-  ];
-
-  timeline(sequence as TimelineDefinition);
-</script>
 
 <BasicLayout
   title="Gianmarco Cavallo - Visited Countries"
   description="A 3d globe showing countries that I have visited so far"
   page="travel"
-
 >
   <a
     href="/"
@@ -29,5 +13,12 @@ import BasicLayout from "../layouts/BasicLayout.astro";
     >Back</a
   >
 
-  <Globe client:load />
+  <h1>Projects will be shown here</h1>
 </BasicLayout>
+
+<style>
+  h1 {
+    font-size: xx-large;
+    color: aliceblue;
+  }
+</style>
