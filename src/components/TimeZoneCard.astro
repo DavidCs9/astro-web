@@ -1,20 +1,25 @@
 ---
-import { getCurrentTimeInItaly, formatTimeForItaly } from "../lib/helpers";
+import { getCurrentTime, formatDate } from "../lib/helpers";
 import Card from "./Card/index.astro";
 ---
 
 <script>
   import { onCleanup, onMount } from "solid-js";
-  import { formatTimeForItaly } from "../lib/helpers";
+  import { formatDate } from "../lib/helpers";
 
   let interval: ReturnType<typeof setInterval>;
 
   function updateClock() {
     const timeDisplay = document.getElementById("timeDisplay");
     const now = new Date();
-
+    console.log(now);
     if (timeDisplay) {
-      timeDisplay.textContent = formatTimeForItaly(now);
+      timeDisplay.textContent = now.toLocaleDateString("en-US", {
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        hour12: true,
+      });
       timeDisplay.setAttribute("datetime", now.toISOString());
     }
   }
@@ -34,6 +39,5 @@ import Card from "./Card/index.astro";
     id="timeDisplay"
     class="text-2xl xl:text-5xl xl:whitespace-nowrap w-50 xl:w-100 h-[calc(100%-28px)] font-serif flex justify-center items-center"
   >
-    {formatTimeForItaly(getCurrentTimeInItaly())}
   </time>
 </Card>
